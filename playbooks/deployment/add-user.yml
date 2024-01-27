@@ -27,6 +27,4 @@
   - name: Set up authorized keys for user
     ansible.posix.authorized_key:
       user: ansible
-      key: "{{ item }}"
-    with_file:
-    - "/home/ansible/.ssh/id_rsa.pub"
+      key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC8IEoYfO3lq7ioSocvf2eesyLdPDSo0n9btIqtF3/J/W8x+H8gDoZIgkYa8+bP6zIksNQhduc+0fe80wHr5Vq96zVILCZxtjJ23ThjMfNGiIT85S1xMD5Y/uov7VlI2R/eRkEgsdF2LGnGWlwqPkiAyH8Zf4BUUWoYFGjQK2NCXl6LtSBqIeaFsErTkYW7IXI23kvajLywQqPtdF2LsfByPt7RxW9mfy1E3eIy7MFQg1CZaRyUkxR0BdjhqlcdVrcxrHOQXE+mALj/kjBq+XjadIs9WQroFFfjCQrJQgqFyqjwaIiTWF65f+OkAdl9Ww8637PwjySfRkp9i08hd8Hugc6Erz3KjSlGBTZ3ixJzZJ8zZ4qlzlWeXw3wbIcJUYEzRZzkVL7w5L3RTG1iM0pjNcEUL0FOGSK8j3gu6+PXxgs4eZH6o043Wg+D7l78MrPZyoHd0mf4Nrgdm8RyBj+WQhniZJvikleYPCs5Lf3TZdnE5KXbA1D3U/i0OdRNFSc= ansible@localdomain"
