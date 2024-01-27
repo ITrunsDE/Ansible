@@ -1,0 +1,32 @@
+---
+
+- name: Add ansible user
+  hosts: all
+  become: true
+  tasks:
+
+  - name: Check if group 'ansible' exists
+    ansible.builtin.group:
+      name: ansible
+      state: present
+
+  - name: Allow 'ansible' group to have passwordless sudo
+    ansible.builtin.lineinfile:
+      dest: /etc/sudoers
+      state: present
+      regexp: '^%ansible'
+      line: '%ansible ALL=(ALL) NOPASSWD:ALL'
+      validate: 'visudo -cf %s'
+
+  - name: Create user
+    ansible.builtin.user:
+      name: ansible
+      comment: Ansible User
+      group: ansible
+
+  - name: Set up authorized keys for user
+    ansible.posix.authorized_key:
+      user: ansible
+      key: "{{ item }}"
+    with_file:
+    - "/home/ansible/.ssh/id_rsa.pub"
